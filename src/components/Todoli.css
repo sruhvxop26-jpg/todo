@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*MAIN SHIT*/
+.main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: auto;
+  height: 15vh;
+
+  border:  rgb(160, 239, 14) solid 2.5px;
+  border-radius: 10px;
+  padding: 0px 5px 5px 5px;
+  margin: 20px;
+  background-color: white;
+}
+
+.del-icon{
+  color: rgb(7, 207, 7);
+  height: 20px;
+  width: auto;
+
+  position: relative;
+  left: 200px;
+  bottom: 0px;
+  cursor: pointer;
+}
+
+.del-icon:hover{
+  color: rgb(8, 167, 8);
+}
+
+.confirm-box{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  position: absolute;
+  height: 70px;
+  width: auto;
+
+  font-size: 15px;
+  color: greenyellow;
+
+  border: greenyellow solid 2px;
+  border-radius: 10px;
+  background-color: black;
+  padding: 10px;
+}
+
+
+/* Common button styles */
+.confirm-box button {
+  border: none;
+  padding: 4px 10px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* YES button */
+.yes-btn {
+  background: #ff4d4f;
+  color: white;
+  margin: 5px;
+}
+
+.yes-btn:hover {
+  background: #e43b3d;
+  transform: scale(1.05);
+}
+
+/* NO button */
+.no-btn {
+  background: #2ecc71;
+  color: white;
+  margin: 5px;
+}
+
+.no-btn:hover {
+  background: #27ae60;
+  transform: scale(1.05);
+}
+
+/* Small pop animation */
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chest{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.chest input{
+  all: unset;
+
+  padding: 5px;
+  margin: 5px;
+  color: black;
+}
+
+
+/* CSS */
+.button-78 {
+  align-items: center;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: Eina01,sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  min-height: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 19px 26px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .button-78 {
+    padding: 19px 32px;
+  }
+}
+
+.button-78:before,
+.button-78:after {
+  border-radius: 80px;
+}
+
+.button-78:before {
+  background-image: linear-gradient(92.83deg, #6ae90f 0, #4fa68f 100%);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.button-78:after {
+  background-color: initial;
+  background-image: linear-gradient(#74fb14 0, #000000 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+.button-78:hover:not(:disabled):before {
+  background: linear-gradient(92.83deg, rgb(126, 233, 11) 0%, rgb(80, 200, 130) 100%);
+}
+
+.button-78:hover:not(:disabled):after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+  opacity: 0;
+}
+
+.button-78:active:not(:disabled) {
+  color: #ccc;
+}
+
+.button-78:active:not(:disabled):before {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #a8ff26 0, #7dd487 100%);
+}
+
+.button-78:active:not(:disabled):after {
+  background-image: linear-gradient(#4e7219 0, #0c0d0d 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.button-78:disabled {
+  cursor: default;
+  opacity: .24;
+}
+

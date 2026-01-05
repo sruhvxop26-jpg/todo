@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #22C1C3;
+  background: black;
+  color: #eee;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-card{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(37, 36, 36);
+
+  border: rgb(86, 241, 9) 2.5px solid;
+  border-radius: 10px;
+
+  width: auto;
+  height: auto;
+  padding: 20px 10px;
+  backdrop-filter: blur(1.5rem);;
+}
+
