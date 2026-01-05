@@ -9,6 +9,7 @@ const Todoli = () => {
   const [list, setlist] = useState([]);
   const [confirmid, setconfirmid] = useState(null);
   const todoContainer = useRef(null);
+  const prevlength = useRef(0);
 
   // inserting an empty object in the array
   // Date.now() is being used to assign a unique value to each todolist
@@ -43,18 +44,29 @@ const Todoli = () => {
     });
   };
 
+  //TODO ADD ANIMATION
   useGSAP(
     // ANIMATION FUNCTION
     () => {
-      gsap.from(".todo:last-child", {
-        y: 20,
-        opacity: 0,
-        scale: 1,
-        duration: 1,
-        stagger: 0.08,
-        ease: "power3.out",
-      });
+      if (list.length < prevlength.current) {
+        prevlength.current = list.length;
+        return;
+      }
+
+      if (list.length > prevlength.current) {
+        gsap.from(".todo:last-child", {
+          y: 20,
+          opacity: 0,
+          scale: 1,
+          duration: 1,
+          stagger: 0.08,
+          ease: "power3.out",
+        });
+      }
+
+      prevlength.current = list.length;
     },
+
     // DEPENDENCIES
     {
       scope: todoContainer,
@@ -62,35 +74,62 @@ const Todoli = () => {
     }
   );
 
+  //TODO DELETE CONFIRMATION BOX ANIMATION
   useGSAP(
-    () => {gsap.from(".confirm-box", {
-        y:20,
-        opacity:1,
-        scale:1,
-        duration:1,
-        stagger:0.05,
-        ease:"power3.out",
-       });
+    () => {
+      gsap.from(".confirm-box", {
+        y: 20,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        stagger: 0.05,
+        ease: "power3.out",
+      });
     },
     {
-        scope: todoContainer,
-        dependencies: [confirmid]
+      scope: todoContainer,
+      dependencies: [confirmid],
     }
-  )
+  );
 
+  // DEL ICON ANIMATION
+  const OnEnterRotateDelIcon = (e) => {
+    const el = e.currentTarget;
+    const tl = gsap.timeline();
 
+    gsap.killTweensOf(el);
 
+    tl.to(el, {
+      rotate: 180,
+      duration: 1,
+      ease: "power3.out",
+    });
+  };
+  const OnLeaveRotateDelIcon = (e) => {
+    const el = e.currentTarget;
+    const tl = gsap.timeline();
 
+    gsap.killTweensOf(el);
+
+    tl.to(el, {
+      rotate: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+  };
 
   return (
     <div className="main" ref={todoContainer}>
       <div className="lists">
         {list.map((item) => (
           <div className="todo" data-id={item.id} key={item.id}>
+            {/* DELETE ICON*/}
             <div className="head">
               <FontAwesomeIcon
                 icon={faXmark}
                 className="del-icon"
+                onMouseOver={(e) => OnEnterRotateDelIcon(e)}
+                onMouseLeave={(e) => OnLeaveRotateDelIcon(e)}
                 onClick={() => setconfirmid(item.id)}
               />
             </div>
@@ -111,13 +150,18 @@ const Todoli = () => {
               </div>
             )}
             <div className="chest">
-              <input type="checkbox" name="" id="" />
               <input
                 type="text"
                 value={item.text}
                 placeholder="Enter a task"
                 onChange={(e) => updatetodo(item.id, e.target.value)}
               />
+            </div>
+            <div className="checkbox-wrapper-24">
+              <input type="checkbox" id={`check-${item.id}`} name={`check-${item.id}`} value="" />
+              <label htmlFor={`check-${item.id}`}>
+                <span></span>
+              </label>
             </div>
           </div>
         ))}
